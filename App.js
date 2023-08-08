@@ -21,7 +21,7 @@ export function HomeScreen({navigation, route}) {
       <Text>itemId: {JSON.stringify(itemId)}</Text>
       <Button
         title="Go to Menu"
-        onPress={() => navigation.push('Menu', {itemId: 5})}
+        onPress={() => navigation.push('Menu', { screen: 'MenuScreen', itemId: 5})}
       />
        <Button
         title="Create post"
