@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Button, TextInput, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NavigationController from './navigation/navigationController';
 
-function HomeScreen({navigation, route}) {
+export function HomeScreen({navigation, route}) {
 
   const {itemId} = route.params;
 
@@ -31,7 +32,7 @@ function HomeScreen({navigation, route}) {
   );
 }
 
-function MenuScreen({navigation, route}) {
+export function MenuScreen({navigation, route}) {
 
   const {itemId} = route.params;
 
@@ -58,7 +59,7 @@ function MenuScreen({navigation, route}) {
 }
 
 // Creates seperate screen allowing params to be sent through
-function CreatePostScreen({ navigation, route }) {
+export function CreatePostScreen({ navigation, route }) {
   const [postText, setPostText] = React.useState('');
 
   return (
@@ -85,33 +86,9 @@ function CreatePostScreen({ navigation, route }) {
   );
 }
 
-const Stack = createNativeStackNavigator();
-
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
-
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ title: 'Overview' }} 
-          initialParams={{ itemId: 42 }}
-        />
-
-        <Stack.Screen 
-          name="Menu" 
-          component={MenuScreen}
-          options={{ title: 'Overview' }} 
-          initialParams={{ itemId: 17 }}
-        />
-        <Stack.Screen 
-          name="CreatePost" 
-          component={CreatePostScreen}
-        />
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NavigationController/>
   );
 }
 
