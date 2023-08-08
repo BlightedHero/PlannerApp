@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, TextInput, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { TaskScreen } from './Task'
 
 function HomeScreen({navigation, route}) {
 
@@ -23,8 +24,8 @@ function HomeScreen({navigation, route}) {
         onPress={() => navigation.push('Menu', {itemId: 5})}
       />
        <Button
-        title="Create post"
-        onPress={() => navigation.navigate('CreatePost')}
+        title="Create Task"
+        onPress={() => navigation.navigate('Task')}
       />
       <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
     </View>
@@ -62,7 +63,7 @@ function CreatePostScreen({ navigation, route }) {
   const [postText, setPostText] = React.useState('');
 
   return (
-    <>
+    <View>
       <TextInput
         multiline
         placeholder="What's on your mind?"
@@ -81,7 +82,7 @@ function CreatePostScreen({ navigation, route }) {
           });
         }}
       />
-    </>
+    </View>
   );
 }
 
@@ -105,9 +106,16 @@ function App() {
           options={{ title: 'Overview' }} 
           initialParams={{ itemId: 17 }}
         />
+
         <Stack.Screen 
           name="CreatePost" 
           component={CreatePostScreen}
+        />
+
+        <Stack.Screen 
+          name="Task" 
+          options={{ title: 'New Task' }} 
+          component={TaskScreen}
         />
         
       </Stack.Navigator>
