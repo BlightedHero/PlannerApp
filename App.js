@@ -89,36 +89,7 @@ export function CreatePostScreen({ navigation, route }) {
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
-
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ title: 'Overview' }} 
-          initialParams={{ itemId: 42 }}
-        />
-
-        <Stack.Screen 
-          name="Menu" 
-          component={MenuScreen}
-          options={{ title: 'Overview' }} 
-          initialParams={{ itemId: 17 }}
-        />
-
-        <Stack.Screen 
-          name="CreatePost" 
-          component={CreatePostScreen}
-        />
-
-        <Stack.Screen 
-          name="Task" 
-          options={{ title: 'New Task' }} 
-          component={TaskScreen}
-        />
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NavigationController/>
   );
 }
 
