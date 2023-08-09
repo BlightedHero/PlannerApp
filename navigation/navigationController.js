@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen, MenuScreen, CreatePostScreen } from '../App';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import AppCalendar from '../components/Calender';
+import EventScreen from '../components/EventScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -24,9 +26,15 @@ export default function NavigationController() {
                 options={{headerShown: false}} 
                 />
                 <Stack.Screen 
+                name="Calender" 
+                component={DrawerNavigation}
+                options={{headerShown: false}} 
+                />
+                <Stack.Screen 
                 name="CreatePost" 
                 component={CreatePostScreen}
                 />
+                <Stack.Screen name="Events" component={EventScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
@@ -44,6 +52,7 @@ function DrawerNavigation() {
                 component={MenuScreen}
                 options={{ title: 'MenuScreen' }} 
                 initialParams={{ itemId: 17 }}/>
+            <Drawer.Screen name="Calender" component={AppCalendar}/>
         </Drawer.Navigator>
     );
 }
