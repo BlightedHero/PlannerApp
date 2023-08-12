@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Button, TextInput, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, MenuScreen, CreatePostScreen } from '../App';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import TaskScreen from '../TaskScreen';
+import MenuScreen from '../MenuScreen';
+import HomeScreen from '../HomeScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -24,8 +25,8 @@ export default function NavigationController() {
                 options={{headerShown: false}} 
                 />
                 <Stack.Screen 
-                name="CreatePost" 
-                component={CreatePostScreen}
+                name="TaskScreen" 
+                component={TaskScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>
