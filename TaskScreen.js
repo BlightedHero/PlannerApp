@@ -5,7 +5,6 @@ export default function TaskScreen({navigation, route}) {
     const [taskTitle, setTaskTitle] = React.useState('');
     const [taskPrio, setTaskPrio] = React.useState('');
     const [taskColor, setTaskColor] = React.useState('');
-    const [id, setId] = React.useState('');
 
     return (
         <View>

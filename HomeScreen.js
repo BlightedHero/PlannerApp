@@ -1,30 +1,19 @@
 import * as React from 'react';
 import { Button, View, Text } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import 'react-native-get-random-values'
+import { v4 as uuidv4 } from 'uuid';
 
 export default function HomeScreen({navigation, route}) {
 
     const [tasks, setTasks] = React.useState([]);
   
-    const addTask = () => {
-      // Create a new task
-      const newTask = { title: route.params?.title, prio: route.params?.prio, color: route.params?.color };
-  
-      // Add the new task to the state
-      setTasks([...tasks, newTask]);
-    };
-  
-    useFocusEffect(
-      React.useCallback(() => {
-        // Your function here
+    React.useEffect(() => {
         if(route.params?.from === 'TaskScreen') {
-          const newTask = { title: route.params?.title, prio: route.params?.prio, color: route.params?.color };
-  
-          setTasks([...tasks, newTask]);
-          console.log('hi')
+            const newTask = { title: route.params?.title, prio: route.params?.prio, color: route.params?.color, key: uuidv4()};
+
+            setTasks([...tasks, newTask]);
         }
-      }, [route.params?.from])
-    );
+    }, [route.params?.title, route.params?.prio, route.params?.color, route.params?.from])
   
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -32,17 +21,15 @@ export default function HomeScreen({navigation, route}) {
   
         <Button
           title="Go to Menu"
-          onPress={() => navigation.navigate('MenuScreen', {itemId: 5})}
+          onPress={() => navigation.push('MenuScreen', {itemId: 5})}
         />
   
         <Button
           title="Create Task"
-          onPress={() => navigation.navigate('TaskScreen')}
+          onPress={() => navigation.navigate('TaskScreen', {from: 'HomeScreen'})}
         />
   
-        <Button title="Add Task" onPress={addTask} />
-  
-        {tasks.map(task => <Text key={task.key}> {task.title}, {task.prio}, {task.color}, {JSON.stringify(task.key)} </Text>)}
+        {tasks.map(task => <Text key={task.key}> {task.title}, {task.prio}, {task.color} </Text>)}
   
       </View>
     );
