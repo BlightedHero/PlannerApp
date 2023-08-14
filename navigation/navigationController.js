@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Button, TextInput, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, MenuScreen, CreatePostScreen } from '../App';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import TaskScreen from '../TaskScreen';
+import MenuScreen from '../MenuScreen';
+import HomeScreen from '../HomeScreen';
 import AppCalendar from '../components/Calender';
 import EventScreen from '../components/EventScreen';
 
@@ -26,13 +27,13 @@ export default function NavigationController() {
                 options={{headerShown: false}} 
                 />
                 <Stack.Screen 
+                name="TaskScreen" 
+                component={TaskScreen}
+                />
+                <Stack.Screen
                 name="Calender" 
                 component={DrawerNavigation}
                 options={{headerShown: false}} 
-                />
-                <Stack.Screen 
-                name="CreatePost" 
-                component={CreatePostScreen}
                 />
                 <Stack.Screen name="Events" component={EventScreen} />
             </Stack.Navigator>
