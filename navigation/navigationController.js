@@ -7,6 +7,7 @@ import MenuScreen from '../MenuScreen';
 import HomeScreen from '../HomeScreen';
 import AppCalendar from '../components/Calender';
 import EventScreen from '../components/EventScreen';
+import TaskInfoScreen from '../TaskInfoScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -27,7 +28,7 @@ export default function NavigationController() {
                 options={{headerShown: false}} 
                 />
                 <Stack.Screen 
-                name="TaskScreen" 
+                name="Tasks" 
                 component={TaskScreen}
                 />
                 <Stack.Screen
@@ -35,7 +36,15 @@ export default function NavigationController() {
                 component={DrawerNavigation}
                 options={{headerShown: false}} 
                 />
-                <Stack.Screen name="Events" component={EventScreen} />
+                <Stack.Screen 
+                name="Events" 
+                component={EventScreen} 
+                />
+                <Stack.Screen 
+                name="Info" 
+                component={TaskInfoScreen}
+                />
+
             </Stack.Navigator>
         </NavigationContainer>
     );
@@ -46,14 +55,17 @@ function DrawerNavigation() {
         <Drawer.Navigator initialRouteName='Home'>
             <Drawer.Screen name="HomeScreen" 
                 component={HomeScreen} 
-                options={{ title: 'Overview' }} 
-                initialParams={{ itemId: 42 }}/>
+                options={{ title: 'Overview' }}
+            />
             <Drawer.Screen 
                 name="MenuScreen" 
                 component={MenuScreen}
-                options={{ title: 'MenuScreen' }} 
-                initialParams={{ itemId: 17 }}/>
-            <Drawer.Screen name="Calender" component={AppCalendar}/>
+                options={{ title: 'MenuScreen' }}
+            />
+            <Drawer.Screen 
+                name="Calender" 
+                component={AppCalendar}
+            />
         </Drawer.Navigator>
     );
 }

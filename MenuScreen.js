@@ -1,16 +1,13 @@
 import { Button, View, Text } from 'react-native';
 
 export default function MenuScreen({navigation, route}) {
-
-    const {itemId} = route.params;
   
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Menu Screen</Text>
-        <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Button
           title="Go to Menu"
-          onPress={() => navigation.push('MenuScreen', {itemId: 7})}
+          onPress={() => navigation.navigate('HomeScreen')}
         />
         <Button
           title="Change Title"
